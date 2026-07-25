@@ -172,6 +172,17 @@ Vercel
 
 ---
 
+## Live Demo
+
+### Public Website
+https://cms-assignment-ten.vercel.app
+
+### Admin Panel
+https://YOUR-ADMIN-VERCEL-URL.vercel.app
+
+### Backend API
+https://cms-assignment-wu94.onrender.com
+
 ## Author
 
 Hrithik Rao
