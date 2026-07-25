@@ -148,6 +148,14 @@ JWT_SECRET=YOUR_SECRET_KEY
 
 ---
 
+Admin Login
+
+Email:
+hrithik@gmail.com
+
+Password:
+12345678
+
 ## Deployment
 
 ### Backend
