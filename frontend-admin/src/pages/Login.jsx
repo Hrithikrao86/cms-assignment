@@ -2,60 +2,73 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
+import {
+  Page,
+  Card,
+  Title,
+  Subtitle,
+  Form,
+  InputGroup,
+  Label,
+  Input,
+  Button,
+} from "./LoginStyles";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await api.post("/auth/login", {
-      email,
-      password,
-    });
+    try {
+      const response = await api.post("/auth/login", {
+        email,
+        password,
+      });
 
-    localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.token);
 
-    navigate("/dashboard");
-  } catch (error) {
-    alert(error.response?.data?.message || "Login failed");
-  }
-};
+      navigate("/dashboard");
+    } catch (error) {
+      alert(error.response?.data?.message || "Login failed");
+    }
+  };
 
   return (
-    <div>
-      <h1>Admin Login</h1>
+    <Page>
+      <Card>
+        <Title>Admin Login</Title>
+        <Subtitle>Sign in to manage your CMS pages</Subtitle>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <br />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+        <Form onSubmit={handleSubmit}>
+          <InputGroup>
+            <Label>Email</Label>
 
-        <br />
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </InputGroup>
 
-        <div>
-          <label>Password</label>
-          <br />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+          <InputGroup>
+            <Label>Password</Label>
 
-        <br />
+            <Input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </InputGroup>
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
+          <Button type="submit">Login</Button>
+        </Form>
+      </Card>
+    </Page>
   );
 }
 
